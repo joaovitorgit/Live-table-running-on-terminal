@@ -2,7 +2,8 @@ import Draftlog from 'draftlog'
 import chalk from 'chalk'
 import chalkTable from 'chalk-table'
 import database from './../database.json'
-
+import readline from 'readline'
+import Person from './person.js'
 
 Draftlog(console).addLineListener(process.stdin)
 
@@ -17,11 +18,14 @@ const options = {
     ]
 }
 
-const table = chalkTable(options, database)
+const table = chalkTable(options, database.map(item => new Person(item).formatted()))
 const print = console.draft(table)
 
-setInterval(()=>{
-    database.push({id: Date.now(), vehicles: ['Test '+Date.now()]})
-    const table = chalkTable(options, database)
-    print (table)
-}, 400);
+const terminal = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
+terminal.question('Qual eh o seu nome?', msg =>{
+    console.log('msg', msg.toString())
+})

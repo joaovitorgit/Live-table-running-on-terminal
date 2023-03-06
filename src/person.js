@@ -8,10 +8,18 @@ export default class Person{
     }
 
     formatted(language){
+        const mapDate = (date)=>{
+            const [year, month, day] = date.split('-').map(Number)
+            
+            return new Date(year, (month-1), day)
+        }
+
         return{
             id: Number(this.id),
             vehicles: new Intl.ListFormat(language, {style: 'long', type:'conjunction'}).format(this.vehicles),
-            kmTraveled: new Intl.NumberFormat(language, {style: 'unit', unit:'kilometer'}).format(this.kmTraveled)
+            kmTraveled: new Intl.NumberFormat(language, {style: 'unit', unit:'kilometer'}).format(this.kmTraveled),
+            from: new Intl.DateTimeFormat(language, {month: "long", day: "2-digit", year: "numeric"}).format(mapDate(this.from)),
+            to: new Intl.DateTimeFormat(language, {month: "long", day: "2-digit", year: "numeric"}).format(mapDate(this.to))
         }
     }
 }

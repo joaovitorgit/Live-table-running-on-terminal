@@ -4,6 +4,13 @@
         "vehicles": ["Motocicleta", "Carro", "Caminhao"],
         "kmTraveled": 10000,
         "from": "2009-01-01",
-        "to": "2020-11-26"
+        "to": "2020-11-12"
+    }, 
+    {
+        "id": 2,
+        "vehicles": ["Aviao", "Bicicleta", "Trator"],
+        "kmTraveled": 20000,
+        "from": "2001-01-01",
+        "to": "2022-11-12"
     }
 ]

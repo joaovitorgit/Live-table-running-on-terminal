@@ -5,6 +5,7 @@ import database from './../database.json'
 import readline from 'readline'
 import Person from './person.js'
 
+const DEFAULT_LANG = 'pt-br'
 Draftlog(console).addLineListener(process.stdin)
 
 const options = {
